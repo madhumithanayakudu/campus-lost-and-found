@@ -1,0 +1,51 @@
+:root{--ink:#14232f;--mute:#5b6b78;--bg:#eaf0f3;--card:#fff;--line:#d3dde3;--lost:#d9822b;--found:#12806f;--brand:#14232f;--r:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Figtree,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.top{background:var(--brand);color:#fff;padding:48px 0 36px}
+.top h1{font-size:clamp(28px,5vw,48px);line-height:1.1;font-weight:800;max-width:15em}
+.lede{color:#b9c8d2;margin:14px 0 24px;max-width:34em}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:26px}
+.stats div{display:flex;flex-direction:column}
+.stats b{font:800 30px "Bricolage Grotesque",sans-serif}
+.stats span{color:#9fb2bf;font-size:14px}
+.btn{font:600 15px Figtree,sans-serif;border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px 18px;border-radius:10px;cursor:pointer}
+.btn.primary{background:#f4b942;border-color:#f4b942;color:#14232f}
+.btn:hover{filter:brightness(.96)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #3b8fd9;outline-offset:2px}
+.btn:disabled{opacity:.6;cursor:wait}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:24px 0}
+input,select,textarea{font:inherit;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.banner{background:#fff4d6;border:1px solid #f0d58a;padding:10px 14px;border-radius:10px;margin-top:20px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding-bottom:48px}
+.card{background:var(--card);border-radius:var(--r);padding:20px 20px 16px;position:relative;border-top:6px solid var(--lost);box-shadow:0 1px 0 var(--line)}
+.card.found{border-top-color:var(--found)}
+.card.done{opacity:.65}
+.card::before{content:"";position:absolute;top:-3px;right:18px;width:12px;height:12px;border-radius:50%;background:var(--bg)}
+.tag{display:inline-block;font-weight:700;font-size:13px;padding:2px 10px;border-radius:99px;color:#fff;background:var(--lost)}
+.found .tag{background:var(--found)}
+.card h3{font-size:20px;margin:10px 0 4px}
+.card p{margin:0 0 10px;color:var(--mute);font-size:15px;overflow-wrap:anywhere}
+.meta{font-size:14px;color:var(--mute);display:grid;gap:2px;margin-bottom:12px}
+.contact{border-top:1px dashed var(--line);padding-top:10px;font-size:14px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.contact span{overflow-wrap:anywhere}
+.link{background:none;border:0;color:var(--found);font:600 14px Figtree,sans-serif;cursor:pointer;padding:4px 0}
+.empty{text-align:center;color:var(--mute);padding:40px 0}
+dialog{border:0;border-radius:var(--r);padding:0;width:min(560px,94vw);max-height:92vh}
+dialog::backdrop{background:rgba(20,35,47,.55)}
+form{padding:24px;display:grid;gap:14px;font-size:14px;font-weight:600}
+form h2{font-size:24px}
+form label{display:grid;gap:4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg label{display:block}
+.seg input{position:absolute;opacity:0;width:1px;height:1px}
+.seg span{display:block;text-align:center;padding:10px;border:2px solid var(--line);border-radius:10px;cursor:pointer}
+.seg input:checked+span{border-color:var(--ink);background:var(--ink);color:#fff}
+.seg input:focus-visible+span{outline:3px solid #3b8fd9;outline-offset:2px}
+.actions{display:flex;justify-content:flex-end;gap:10px}
+.err{color:#b3261e;margin:0;font-weight:500}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:10px;z-index:10}
+@media(max-width:720px){.filters{grid-template-columns:1fr 1fr}.filters #q{grid-column:1/-1}.row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:no-preference){.card{transition:transform .15s}.card:hover{transform:translateY(-2px)}}

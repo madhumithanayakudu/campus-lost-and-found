@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <h1>Lost something on campus?<br>Somebody may have it.</h1>
+    <p class="lede">Post what you lost or found. Contact the owner or finder directly.</p>
+    <div class="stats" id="stats" aria-live="polite">
+      <div><b id="sLost">0</b><span>still lost</span></div>
+      <div><b id="sFound">0</b><span>waiting to be claimed</span></div>
+      <div><b id="sDone">0</b><span>returned</span></div>
+    </div>
+    <button class="btn primary" id="openForm" type="button">Post an item</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="banner" class="banner" hidden></div>
+  <section class="filters" aria-label="Filters">
+    <input id="q" type="search" placeholder="Search title, description or place" aria-label="Search">
+    <select id="fType" aria-label="Type"><option value="">Lost and found</option><option value="lost">Lost</option><option value="found">Found</option></select>
+    <select id="fCat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="fStatus" aria-label="Status"><option value="open">Open</option><option value="resolved">Returned</option><option value="">Any status</option></select>
+  </section>
+  <section id="list" class="grid" aria-live="polite"></section>
+  <p id="empty" class="empty" hidden>Nothing matches yet. Try fewer filters, or post the item yourself.</p>
+</main>
+
+<dialog id="dlg">
+  <form id="form" novalidate>
+    <h2>Post an item</h2>
+    <div class="seg" role="radiogroup" aria-label="Type">
+      <label><input type="radio" name="type" value="lost" checked><span>I lost it</span></label>
+      <label><input type="radio" name="type" value="found"><span>I found it</span></label>
+    </div>
+    <label>Item name<input name="title" maxlength="100" placeholder="Black laptop bag" required></label>
+    <label>Description<textarea name="description" maxlength="1000" rows="3" placeholder="Colour, brand, anything that proves it is yours"></textarea></label>
+    <div class="row">
+      <label>Category<select name="category" id="catSel" required></select></label>
+      <label>Date<input type="date" name="event_date" id="dateIn"></label>
+    </div>
+    <label>Location<input name="location" maxlength="120" placeholder="Central Library, 2nd floor" required></label>
+    <div class="row">
+      <label>Your name<input name="contact_name" maxlength="80" required></label>
+      <label>Email or phone<input name="contact_info" maxlength="120" required></label>
+    </div>
+    <p id="formErr" class="err" role="alert" hidden></p>
+    <div class="actions">
+      <button type="button" class="btn" id="cancel">Cancel</button>
+      <button type="submit" class="btn primary" id="submitBtn">Post item</button>
+    </div>
+  </form>
+</dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
